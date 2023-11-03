@@ -1,10 +1,11 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import styles from './map.module.css';
 
 const Map = ({ collectionSpots }) => {
   return (
-    <MapContainer center={[60.1695, 24.9354]} zoom={13} style={{ height: '400px', width: '100%' }}>
+    <MapContainer className={styles.mapContainer} center={[60.1695, 24.9354]} zoom={13} >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />

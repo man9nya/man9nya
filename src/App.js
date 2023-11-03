@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Map from './components/map/Map'; // Oikea polku Map-komponenttiin
+import Navbar from './components/layout/sidebar';
 
 const App = () => {
   const [collectionSpots, setCollectionSpots] = useState([]);
@@ -10,7 +11,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Keräyspisteet Kartalla</h1>
+      <h1></h1>
       <Map collectionSpots={collectionSpots} />
     </div>
   );
