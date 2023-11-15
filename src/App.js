@@ -9,10 +9,11 @@ const App = () => {
 
   useEffect(() => {
     // Haetaan keräyspisteiden tiedot API:sta
-    fetch('https://api.kierratys.info/collectionspots/?api_key=1088873da4e98f7edfa6db96ddc01c57c7ea9365') //TÄNNE RAJATETTU HAKU!!!
+    fetch('https://api.kierratys.info/collectionspots/?api_key=1088873da4e98f7edfa6db96ddc01c57c7ea9365&limit=1000') //TÄNNE RAJATETTU HAKU!!!
     .then(response => response.json())
       .then(data => {
         // Tallennetaan haetut tiedot collectionSpots-tilaan
+        console.log(data.results.length)
         setCollectionSpots(data.results); // Oletetaan, että data.results sisältää keräyspisteiden tiedot
       })
       .catch(error => {
