@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Map from './components/map/Map'; // Oikea polku Map-komponenttiin
-import Navbar from './components/layout/sidebar';
+import Nav from './components/layout/Nav';
 
 const App = () => {
   const [collectionSpots, setCollectionSpots] = useState([]);
