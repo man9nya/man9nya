@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import Map from './components/map/Map'; // Oikea polku Map-komponenttiin
 import Navbar from './components/layout/sidebar';
+import Home from './components/home/Home'
 
 const App = () => {
   const [collectionSpots, setCollectionSpots] = useState([]);
 
   useEffect(() => {
     // Haetaan keräyspisteiden tiedot API:sta
-    fetch('https://api.kierratys.info/collectionspots/?api_key=1088873da4e98f7edfa6db96ddc01c57c7ea9365&limit=1000') //TÄNNE RAJATETTU HAKU!!!
+    fetch('https://api.kierratys.info/collectionspots/?api_key=1088873da4e98f7edfa6db96ddc01c57c7ea9365') //TÄNNE RAJATETTU HAKU!!!
     .then(response => response.json())
       .then(data => {
         // Tallennetaan haetut tiedot collectionSpots-tilaan
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <div className="App">
       <h1></h1>
+      <Home/>
       <Map collectionSpots={collectionSpots} />
     </div>
   );
