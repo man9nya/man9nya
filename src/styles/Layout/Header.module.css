@@ -1,0 +1,12 @@
+.header {
+    min-height: fit-content;
+    max-height: 10%;
+    height: 5%;
+    padding: 1em;
+    display: flex;
+    background-color: rgb(209, 233, 255);
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    border-radius: 0 0 1em 1em ;
+}

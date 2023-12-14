@@ -1,7 +1,7 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import { useFindLocation } from "../../App";
+import { useFindLocation } from "../consts/hooks/useFindLocation";
 import { useEffect } from "react";
 import MarkerClusterGroup from "react-leaflet-cluster";
 
@@ -15,7 +15,6 @@ const Map = () => {
 
   useEffect(() => {
     if (result) {
-      console.log(result);
       return
     }
     {
@@ -38,9 +37,7 @@ const Map = () => {
                   position={[spot.geometry.coordinates[1], spot.geometry.coordinates[0]]}
                   icon={customMarker}
                 >
-                  <Popup>
-
-                  </Popup>
+                  <Popup></Popup>
                 </Marker>
               )
           )}

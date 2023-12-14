@@ -1,0 +1,11 @@
+.footer {
+    min-height: fit-content;
+    max-height: 10%;
+    height: 5%;
+    padding: 1em;
+    display: flex;
+    background-color: rgb(209, 233, 255);
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em 1em 0 0;
+}
