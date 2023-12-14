@@ -1,25 +1,51 @@
 import { useEffect, useState } from "react";
-import {API_KEY} from '../api-key.js'
+import { API_KEY } from "../api-key.js";
+
+let cachedData;
+let cachedTime = new Date();
+
 export const useFindLocation = () => {
-  const [info, setInfo] = useState(null);
   const [res, setRes] = useState(null);
+  const [selected, setSelected] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const time = new Date();
 
   useEffect(() => {
-    fetch("https://ipapi.co/json/")
-      .then((data) => data.json())
-      .then((c) => setInfo(c))
-      .then(() => {
-        fetch(`https://api.kierratys.info/collectionspots/?api_key=${API_KEY}&limit=2000`)
+    setLoading(true);
 
-          .then((data) => data.json())
-          .then((c) =>
-            c.count > 0
-              ? setRes(c)
-              : setRes("Your city does not have spots")
-          ).then(console.log(res));
-      })
-      .catch((error) => console.log(error));
-  }, []);
-  
-  return [info, res]
+    const fetchData = async () => {
+      try {
+        let spotsResponse;
+
+        if (!cachedData || time - cachedTime > 60000) {
+          spotsResponse = await fetch(
+            `https://api.kierratys.info/collectionspots/?api_key=${API_KEY}&limit=10`, {headers: {
+              
+            }}
+          );
+          cachedData = spotsResponse;
+          cachedTime = new Date();
+        } else {
+          spotsResponse = cachedData;
+        }
+
+        const spotsData = await spotsResponse.json();
+
+        if (spotsData.count > 0) {
+          setRes(spotsData);
+        } else {
+          setRes("Your city does not have spots");
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [selected]);
+
+  return [res, selected, setSelected, loading];
 };
