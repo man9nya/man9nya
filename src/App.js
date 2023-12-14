@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Map from "./components/Map";
+import Home from "./components/home/Home";
+import Map from "./components/map/Map";
 
 const App = () => {
 

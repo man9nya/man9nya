@@ -1,9 +1,11 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import { useFindLocation } from "../../App";
-import { useEffect } from "react";
+import { useFindLocation } from "../../consts/hooks/useFindLocation";
 import MarkerClusterGroup from "react-leaflet-cluster";
+import "./Map.css";
+import Sidebar from "../sidebar/Sidebar";
+
 
 const Map = () => {
   const [info, result] = useFindLocation();
@@ -13,41 +15,32 @@ const Map = () => {
     iconSize: [38, 38],
   });
 
-  useEffect(() => {
-    if (result) {
-      console.log(result);
-      return
-    }
-    {
-      console.log("no");
-    }
-  }, [result]);
-
   return (
-    (info && (
-      <MapContainer center={[info.latitude, info.longitude]} zoom={13}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <MarkerClusterGroup chunkedLoading>
+    <div className='container'>
+      <Sidebar/>
+      {(info && (
+        <MapContainer center={[info.latitude, info.longitude]} zoom={13}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <MarkerClusterGroup chunkedLoading>
 
-        {result &&
-          result?.results.map(
-            (spot) =>
-              spot?.geometry?.coordinates && (
-                <Marker
-                key={spot.spot_id}
-                  position={[spot.geometry.coordinates[1], spot.geometry.coordinates[0]]}
-                  icon={customMarker}
-                >
-                  <Popup>
-
-                  </Popup>
-                </Marker>
-              )
-          )}
-        </MarkerClusterGroup>
-      </MapContainer>
-    )) || <div className="loading">Loading...</div>
-  );
+            {result &&
+              result?.results.map(
+                (spot) =>
+                  spot?.geometry?.coordinates && (
+                    <Marker
+                      key={spot.spot_id}
+                      position={[spot.geometry.coordinates[1], spot.geometry.coordinates[0]]}
+                      icon={customMarker}
+                    >
+                      <Popup></Popup>
+                    </Marker>
+                  )
+              )}
+          </MarkerClusterGroup>
+        </MapContainer>
+      )) || <div className="loading">Loading...</div>}
+    </div>
+  )
 };
 
 export default Map;
