@@ -9,8 +9,8 @@ function Home() {
             <div class="map" id="mapContainer"> 
             </div>
             <div class="text">
-            <h1>Kierrätys sivusto</h1>
-            <p>Täältä voit nähdä suomen kaikki kierrätyspisteet</p>
+            <h1>БОЛЬШОЙ ХУЙ</h1>
+            <p>ХУЙ</p>
             </div>
         </div>
         
