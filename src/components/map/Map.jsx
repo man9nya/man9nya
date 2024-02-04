@@ -7,6 +7,7 @@ import "./Map.css";
 import Sidebar from "../sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Search from "../search/Search";
 
 const Map = () => {
   const [result, selected, setSelected, loading] = useFindLocation();
@@ -24,6 +25,7 @@ const Map = () => {
   return (
     <div className="container">
       <Sidebar result={result} selected={selected} setSelected={setSelected} />
+      <Search/>
       {(mapLoaded && (
         <MapContainer center={[60, 25]} zoom={5}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

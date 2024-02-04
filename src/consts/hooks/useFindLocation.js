@@ -20,7 +20,7 @@ export const useFindLocation = () => {
 
         if (!cachedData || time - cachedTime > 60000) {
           spotsResponse = await fetch(
-            `https://api.kierratys.info/collectionspots/?api_key=${API_KEY}&limit=10`, {headers: {
+            `https://api.kierratys.info/collectionspots/?api_key=${API_KEY}&limit=500`, {headers: {
               
             }}
           );
